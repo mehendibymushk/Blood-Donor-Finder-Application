@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Donor Finder | Save Lives</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: #f8f5f6;
+    color: #171313;
+}
+
+/* TOP BLACK BAR */
+.topbar {
+    height: 55px;
+    background: #100505;
+    color: white;
+    padding: 0 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.topbar .heart {
+    color: #ff1739;
+    font-size: 19px;
+}
+
+.topbar .quote {
+    color: #f3dada;
+    font-style: italic;
+}
+
+/* NAVIGATION */
+.navbar {
+    min-height: 100px;
+    background: #fff;
+    padding: 15px 3.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 3px 15px rgba(0,0,0,.05);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 25px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo span { color: #c90024; }
+
+.logo svg {
+    width: 50px;
+    height: 58px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #211919;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #c90024;
+}
+
+.nav-links a.active {
+    border-bottom: 3px solid #c90024;
+    padding-bottom: 9px;
+}
+
+.nav-links .donor-btn {
+    color: white;
+    background: linear-gradient(135deg,#ed001e,#a9001c);
+    padding: 15px 24px;
+    border-radius: 35px;
+    box-shadow: 0 5px 15px rgba(190,0,35,.2);
+}
+
+.nav-links .donor-btn:hover {
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: 590px;
+    padding: 65px 3.6% 100px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    background:
+        radial-gradient(ellipse at 76% 40%,rgba(180,0,25,.55),transparent 38%),
+        linear-gradient(115deg,#100505 0%,#260000 55%,#62000d 100%);
+}
+
+/* Background circles */
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 570px;
+    height: 570px;
+    border: 1px solid rgba(255,30,60,.15);
+    border-radius: 50%;
+    right: 8%;
+    top: -10%;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 110%;
+    height: 115px;
+    left: -5%;
+    bottom: -65px;
+    background: #ed001f;
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0 -10px 0 rgba(130,0,20,.7);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 660px;
+}
+
+.tag {
+    display: inline-block;
+    color: white;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 12px 22px;
+    border-radius: 35px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.hero h1 {
+    color: white;
+    font-size: clamp(42px,5vw,75px);
+    font-weight: 800;
+    line-height: 1.13;
+    letter-spacing: -2px;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #ff102e;
+}
+
+.hero p {
+    color: #e8dede;
+    line-height: 1.9;
+    font-size: 15px;
+    max-width: 620px;
+    margin-bottom: 30px;
+}
+
+/* HERO BUTTONS */
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 17px 27px;
+    border-radius: 35px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+    transition: .3s;
+}
+
+.btn-red {
+    background: linear-gradient(135deg,#ff102e,#c00020);
+    color: white;
+    box-shadow: 0 8px 22px rgba(255,0,40,.25);
+}
+
+.btn-outline {
+    border: 2px solid white;
+    color: white;
+    background: rgba(0,0,0,.15);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+}
+
+/* RIGHT SIDE ILLUSTRATION */
+.hero-art {
+    position: relative;
+    z-index: 2;
+    width: 43%;
+    min-width: 300px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Heart outline */
+.heart-outline {
+    position: absolute;
+    width: 310px;
+    height: 290px;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    fill: none;
+    stroke: #ff1739;
+    stroke-width: 3;
+    filter: drop-shadow(0 0 10px #ff1739);
+}
+
+/* ECG line */
+.ecg {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    top: 145px;
+    left: 0;
+    overflow: visible;
+}
+
+.ecg path {
+    fill: none;
+    stroke: #ff1739;
+    stroke-width: 3;
+    filter: drop-shadow(0 0 5px #ff1739);
+}
+
+/* Drop illustration */
+.drop-visual {
+    position: relative;
+    z-index: 3;
+    width: 170px;
+    height: 220px;
+    margin-top: -55px;
+    filter: drop-shadow(0 0 20px rgba(255,0,40,.6));
+}
+
+.drop-visual svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* HANDS */
+.hands {
+    position: absolute;
+    z-index: 2;
+    width: 330px;
+    height: 175px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hands svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* DECORATIONS */
+.plus {
+    position: absolute;
+    color: rgba(220,0,35,.55);
+    font-size: 65px;
+    font-weight: 700;
+}
+
+.plus.one { right: 5%; top: 20px; }
+.plus.two { left: 3%; bottom: 80px; font-size: 45px; }
+
+/* FEATURE CARDS */
+.features {
+    padding: 0 3.7%;
+    margin-top: -55px;
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 22px;
+}
+
+.feature-card {
+    min-height: 150px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 27px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 12px 35px rgba(30,0,0,.10);
+    transition: .3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(180,0,30,.15);
+}
+
+.feature-icon {
+    min-width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #ffe1e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 38px;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #181111;
+}
+
+.feature-card p {
+    color: #594b4b;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 85px 15px 25px;
+    color: #766969;
+    font-size: 13px;
+}
+
+footer span {
+    color: #c90024;
+    font-weight: 700;
+}
+
+/* RESPONSIVE */
+@media(max-width:1050px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .hero-art {
+        min-width: 260px;
+    }
+
+    .feature-card {
+        padding: 20px 15px;
+        gap: 12px;
+    }
+
+    .feature-icon {
+        min-width: 65px;
+        height: 65px;
+        font-size: 28px;
+    }
+}
+
+@media(max-width:750px) {
+    .topbar {
+        justify-content: center;
+    }
+
+    .topbar .quote { display: none; }
+
+    .navbar { padding: 17px 12px; }
+
+    .logo { font-size: 22px; }
+
+    .nav-links { gap: 14px; }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 6% 100px;
+    }
+
+    .hero-content { max-width: 100%; }
+
+    .hero h1 { font-size: 45px; }
+
+    .hero-buttons { justify-content: center; }
+
+    .hero-art {
+        width: 100%;
+        min-width: 0;
+        max-width: 400px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        margin-top: -45px;
+    }
+
+    .feature-card {
+        min-height: 120px;
+    }
+}
+
+@media(max-width:420px) {
+    .hero h1 { font-size: 37px; }
+
+    .hero p { font-size: 13px; }
+
+    .btn {
+        padding: 14px 17px;
+        font-size: 12px;
+    }
+
+    .nav-links a { font-size: 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <span><span class="heart">♥</span> &nbsp; Donate Blood &nbsp; • &nbsp; Save Lives</span>
+    <span class="quote">A little kindness can save a life &nbsp; ❤️</span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">
+        <svg viewBox="0 0 50 60">
+            <path d="M25 2 C20 15 5 31 5 40 A20 20 0 0 0 45 40 C45 31 30 15 25 2Z" fill="#c90024"/>
+            <path d="M25 23 V45 M14 34 H36" stroke="white" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <div>Blood Donor <span>Finder</span></div>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="search.php">Find Donor</a>
+        <a href="nearby_map.php">Nearby Donors</a>
+        <a href="login.php">Login</a>
+        <a href="admin_login.php">Admin Login</a>
+        <a href="register.php" class="donor-btn">🩸 Become a Donor</a>
+        
+    </div>
+
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="tag">❤️ &nbsp; Blood Donor Finder</div>
+
+        <h1>
+            Find a Blood Donor.<br>
+            <span>Save a Life.</span>
+        </h1>
+
+        <p>
+            Connecting blood donors with people who need blood.
+            Your one donation can make a difference and give someone
+            another chance at life.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="search.php" class="btn btn-red">
+                🔍 &nbsp; Find a Donor &nbsp; →
+            </a>
+
+            <a href="nearby_map.php" class="btn btn-outline">
+                📍 &nbsp; Find Nearby Donors
+            </a>
+            <a href="blood_request.php" class="btn btn-red">
+                 🩸 &nbsp; Request Blood &nbsp; →
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- BLOOD DROP ART -->
+    <div class="hero-art">
+
+        <div class="plus one">+</div>
+        <div class="plus two">+</div>
+
+        <svg class="heart-outline" viewBox="0 0 300 280">
+            <path d="M150 245 C120 210 25 145 35 85 C45 20 125 25 150 85 C175 25 255 20 265 85 C275 145 180 210 150 245Z"/>
+        </svg>
+
+        <svg class="ecg" viewBox="0 0 500 100" preserveAspectRatio="none">
+            <path d="M0 55 H100 L115 55 L128 30 L140 85 L155 10 L168 65 L185 55 H315 L330 55 L345 30 L357 85 L372 10 L385 65 L400 55 H500"/>
+        </svg>
+
+        <div class="drop-visual">
+            <svg viewBox="0 0 180 230">
+                <defs>
+                    <linearGradient id="blood" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#ffb1bd"/>
+                        <stop offset="35%" stop-color="#ff173b"/>
+                        <stop offset="75%" stop-color="#c00020"/>
+                        <stop offset="100%" stop-color="#65000e"/>
+                    </linearGradient>
+                    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="white" stop-opacity=".9"/>
+                        <stop offset="100%" stop-color="white" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+
+                <path d="M90 5 C70 55 20 115 20 155 A70 70 0 0 0 160 155 C160 115 110 55 90 5Z"
+                    fill="url(#blood)" stroke="#ff9aaa" stroke-width="3"/>
+
+                <path d="M80 30 C65 80 43 115 43 151 C43 170 54 183 68 185"
+                    fill="none" stroke="url(#shine)" stroke-width="12" stroke-linecap="round"/>
+
+                <ellipse cx="115" cy="175" rx="23" ry="9" fill="#ff9aaa" opacity=".25"/>
+            </svg>
+        </div>
+
+        <div class="hands">
+            <svg viewBox="0 0 330 175">
+                <defs>
+                    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#ffe0d9"/>
+                        <stop offset="100%" stop-color="#d88f8b"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Left hand -->
+                <path d="M160 160
+                C130 130 110 110 82 90
+                L35 55 Q22 45 13 57
+                Q5 69 20 81 L65 120
+                L32 99 Q18 91 10 103
+                Q4 116 21 128 L90 165 Z"
+                fill="url(#skin)"/>
+
+                <!-- Right hand -->
+                <path d="M170 160
+                C200 130 220 110 248 90
+                L295 55 Q308 45 317 57
+                Q325 69 310 81 L265 120
+                L298 99 Q312 91 320 103
+                Q326 116 309 128 L240 165 Z"
+                fill="url(#skin)"/>
+
+                <!-- Palms -->
+                <path d="M85 110 Q115 90 150 120 L165 175 L100 175Z" fill="url(#skin)"/>
+                <path d="M245 110 Q215 90 180 120 L165 175 L230 175Z" fill="url(#skin)"/>
+            </svg>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURE CARDS -->
+<section class="features">
+
+    <div class="feature-card">
+        <div class="feature-icon">🩸</div>
+        <div>
+            <h3>Find Blood Donors</h3>
+            <p>Search registered donors by blood group and city.</p>
+        </div>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <div>
+            <h3>Explore Nearby</h3>
+            <p>Open the location page to find nearby donors.</p>
+        </div>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">❤️</div>
+        <div>
+            <h3>Make a Difference</h3>
+            <p>Help connect people who need blood with donors.</p>
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 <span>Blood Donor Finder</span>. Made with ❤️ to Save Lives.
+</footer>
+
+</body>
+</html>

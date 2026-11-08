@@ -1,0 +1,407 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    color: #333;
+}
+
+
+/* HEADER */
+
+header {
+    background: #b30000;
+    color: white;
+
+    padding: 18px 8%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+
+    margin-left: 20px;
+
+    font-size: 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 500px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    background: linear-gradient(
+        rgba(179, 0, 0, 0.85),
+        rgba(100, 0, 0, 0.85)
+    );
+}
+
+.hero-content {
+    color: white;
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+
+/* BUTTONS */
+
+.btn {
+    display: inline-block;
+
+    background: white;
+    color: #b30000;
+
+    padding: 13px 25px;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    margin: 5px;
+}
+
+.btn.secondary {
+    background: #333;
+    color: white;
+}
+
+
+/* ABOUT */
+
+.about {
+    padding: 60px 8%;
+
+    text-align: center;
+}
+
+.about h2 {
+    margin-bottom: 35px;
+
+    font-size: 32px;
+}
+
+.cards {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+
+    padding: 30px;
+
+    width: 280px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+
+    color: #b30000;
+}
+
+.card p {
+    line-height: 1.6;
+}
+
+
+/* FORM */
+
+.form-container {
+    width: 90%;
+    max-width: 500px;
+
+    margin: 50px auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    color: #b30000;
+}
+
+label {
+    display: block;
+
+    margin-top: 15px;
+    margin-bottom: 7px;
+
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+    font-size: 15px;
+}
+
+textarea {
+    height: 80px;
+    resize: none;
+}
+
+button {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 25px;
+
+    background: #b30000;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 5px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #850000;
+}
+
+
+/* MESSAGE */
+
+.message {
+    background: #e8f8e8;
+
+    color: green;
+
+    padding: 10px;
+
+    border-radius: 5px;
+
+    margin-bottom: 15px;
+
+    text-align: center;
+}
+
+.error {
+    background: #ffe5e5;
+
+    color: #b30000;
+
+    padding: 10px;
+
+    border-radius: 5px;
+
+    margin: 15px 0;
+
+    text-align: center;
+}
+
+
+/* SEARCH */
+
+.search-container {
+    width: 90%;
+
+    max-width: 1000px;
+
+    margin: 40px auto;
+}
+
+.search-container h2 {
+    text-align: center;
+
+    color: #b30000;
+
+    margin-bottom: 25px;
+}
+
+.search-container form {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.donor-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+    margin-top: 20px;
+}
+
+.donor-card {
+    background: white;
+
+    width: 300px;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.donor-card h3 {
+    color: #b30000;
+
+    margin-bottom: 15px;
+}
+
+.donor-card p {
+    margin: 8px 0;
+}
+
+.call-btn {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    background: #b30000;
+
+    color: white;
+
+    padding: 10px 15px;
+
+    text-decoration: none;
+
+    border-radius: 5px;
+}
+
+
+/* DASHBOARD */
+
+.dashboard {
+    text-align: center;
+
+    margin: 100px auto;
+
+    width: 90%;
+
+    max-width: 700px;
+}
+
+.dashboard h1 {
+    color: #b30000;
+
+    margin-bottom: 15px;
+}
+
+.dashboard-buttons {
+    margin-top: 30px;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #222;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+
+    margin-top: 40px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 5px;
+        display: inline-block;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .donor-card {
+        width: 100%;
+    }
+}

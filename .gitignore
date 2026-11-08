@@ -1,0 +1,18 @@
+# Private configuration
+db.php
+mail-config.php
+
+# Private database backups
+*.sql
+*.sql.zip
+
+# Dependencies
+/vendor/
+
+# Temporary files
+composer-error.txt
+*.log
+
+# Local environment files
+.env
+.env.*
